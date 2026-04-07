@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💌 Romantic Message</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:"Segoe UI", sans-serif; }
+    body, html { height: 100%; }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.95);
+      max-width: 500px;
+      width: 90%;
+      border-radius: 25px;
+      padding: 30px 25px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+      text-align: center;
+      animation: fadeIn 1.2s ease;
+      backdrop-filter: blur(10px);
+      display: none; /* hidden until password correct */
+    }
+
+    h2 { color:#e91e63; margin-bottom: 15px; }
+    p { color:#555; line-height:1.8; font-size:15px; margin-bottom:12px; }
+    .footer { margin-top:15px; color:#999; font-size:14px; font-style:italic; }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      color: rgba(255,255,255,0.6);
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(100vh); opacity:1; }
+      to { transform: translateY(-10vh); opacity:0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity:0; transform:translateY(30px); }
+      to { opacity:1; transform:translateY(0); }
+    }
+
+    /* Password form */
+    .password-container {
+      background: rgba(255,255,255,0.9);
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    .password-container input {
+      padding: 10px;
+      width: 70%;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      margin-right: 10px;
+    }
+    .password-container button {
+      padding: 10px 15px;
+      border:none;
+      border-radius:10px;
+      background-color:#e91e63;
+      color:white;
+      cursor:pointer;
+    }
+
+    @media (max-width: 600px) {
+      p { font-size:14px; }
+      .password-container input { width:60%; margin-bottom:10px; }
+      .password-container button { width:30%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating hearts -->
+  <div class="heart" style="left:10%; animation-delay:0s;">❤️</div>
+  <div class="heart" style="left:30%; animation-delay:2s;">💖</div>
+  <div class="heart" style="left:50%; animation-delay:4s;">💕</div>
+  <div class="heart" style="left:70%; animation-delay:1s;">💗</div>
+  <div class="heart" style="left:85%; animation-delay:3s;">💘</div>
+
+  <!-- Password input -->
+  <div class="password-container" id="passwordForm">
+    <h2>🔐 Enter Password</h2>
+    <input type="password" id="pwdInput" placeholder="Enter password">
+    <button onclick="checkPassword()">Submit</button>
+    <p id="errorMsg" style="color:red; margin-top:10px;"></p>
+  </div>
+
+  <!-- Romantic message card -->
+  <div class="card" id="messageCard">
+    <h2>💌 សារ​មួយ​សម្រាប់​អ្នក</h2>
+
+    <p>សួស្តី ខ្ញុំសង្ឃឹមថាអ្នកសុខសប្បាយល្អ។ ខ្ញុំគ្រាន់តែចង់សុំអនុញ្ញាតនិយាយអ្វីមួយបន្តិច ដែលនៅក្នុងចិត្តខ្ញុំយូរហើយ។ កុំបារម្ភណា ខ្ញុំមិនមានបំណងរំខានជីវិតអ្នក ឬទំនាក់ទំនងបច្ចុប្បន្នរបស់អ្នកទេ។</p>
+
+    <p>ខ្ញុំគ្រាន់តែចង់ប្រាប់ថា មានពាក្យខ្លះដែលខ្ញុំមិនទាន់បាននិយាយពីមុន ហើយខ្ញុំចង់បិទវាឲ្យចប់ក្នុងចិត្តខ្ញុំ។ អរគុណចំពោះអ្វីៗល្អដែលយើងធ្លាប់មាន ហើយខ្ញុំសូមជូនពរឲ្យអ្នកមានសុភមង្គលជាមួយជីវិតថ្មីរបស់អ្នក។</p>
+
+    <p>បើអ្នកមិនមានភាពងាយស្រួលក្នុងការឆ្លើយតប ក៏មិនអីទេ។ ខ្ញុំគោរពការសម្រេចចិត្តរបស់អ្នក </p>
+
+    <div class="footer">ពីមនុស្សម្នាក់ដែលនៅតែគោរពអ្នក 💖</div>
+  </div>
+
+  <script>
+    function checkPassword() {
+      const input = document.getElementById('pwdInput').value;
+      const card = document.getElementById('messageCard');
+      const form = document.getElementById('passwordForm');
+      const error = document.getElementById('errorMsg');
+
+      if(input === '270406') {
+        form.style.display = 'none';
+        card.style.display = 'block';
+      } else {
+        error.textContent = 'Password មិនត្រឹមត្រូវ! សូមព្យាយាមម្ដងទៀត។';
+      }
+    }
+  </script>
+
+</body>
+</html>
